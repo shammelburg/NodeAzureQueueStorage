@@ -1,12 +1,14 @@
-const { addMessage, processMessage, peekMessage } = require('./azure-queue-storage')
+const { addMessage, processMessage, peekMessage, listQueues, createQueue } = require('./azure-queue-storage')
 
 const queueName = "test-queue";
 const message = 'This is a message from Node.js'
 
 
 async function main() {
+    await createQueue(queueName)
+
     let i = 1;
-    for await (const item of listOfQueues) {
+    for await (const item of listQueues) {
         console.log(`Queue${i}: ${item.name}`);
         i++;
     }
